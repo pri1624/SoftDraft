@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "../styles/cutoutTray.css";
+import "../styles/cutouttray.css";
 import CropWorkspace from "./CropWorkspace";
 
 function CutOutTray() {
