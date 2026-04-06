@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Moveable from "react-moveable";
 
-import "../styles/journalPage.css";
+import "../styles/journalpage.css";
 import JournalBackground from "./JournalBackground";
 import JournalPageDraw from "./JournalPageDraw";
 import background from "../assets/pictures/background.png";
