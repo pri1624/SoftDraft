@@ -6,8 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 function UploadPannel({ isdarkTheme }) {
 const [files, setFiles] = useState([]);
+const [showWarning, setShowWarning] = useState(false);
 const inputRef = useRef(null);
 const navigate = useNavigate();
+
+const triggerWarning = () => {
+setShowWarning(true);
+setTimeout(() => setShowWarning(false), 2000);
+};
 
 const handleFiles = async (selectedFiles) => {
 const filesArray = Array.from(selectedFiles);
@@ -53,7 +59,7 @@ setFiles((prev) => prev.filter((_, i) => i !== index));
 
 const handleContinue = () => {
 if (files.length === 0) {
-alert("Please attach pictures before continuing.");
+triggerWarning();
 return;
 }
 
@@ -116,6 +122,12 @@ Upload stickers, papers or journal pages you want to experiment with </h2>
       </div>
     ))}
   </div>
+
+  {showWarning && (
+  <div className="tool-warning">
+    Please attach pictures before continuing.
+  </div>
+  )}
 
   <button className="continue" onClick={handleContinue}>
     Continue
