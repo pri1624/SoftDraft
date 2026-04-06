@@ -1,0 +1,316 @@
+.journal-container{
+display:flex;
+height:100vh;
+font-family:'Gaegu', cursive;
+position: relative;
+}
+
+.journal-navbar{
+width:5.625rem;
+background:var(--navbar-bg);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:1.875rem;
+}
+
+.nav-item{
+display:flex;
+flex-direction:column;
+align-items:center;
+color:var(--text-color);
+font-size:1rem;
+font-weight:bold;
+cursor:pointer;
+}
+
+.nav-item img{
+width:1.9rem;
+margin-bottom:0.25rem;
+transition:0.2s;
+filter: drop-shadow(0 0 0.03rem currentColor)
+        drop-shadow(0 0 0.03rem currentColor);
+}
+
+.journal-workspace{
+flex:1;
+background:transparent;
+position:relative;
+overflow:hidden;
+font-size:1.5rem;
+}
+/* DARK THEME */
+
+body.dark{
+--navbar-bg:#0c1b33;
+--workspace-bg:#081229;
+--text-color:white;
+--divider-color:#3a4c6a;
+}
+
+/* LIGHT THEME */
+
+body.light{
+--navbar-bg:#ffffff;
+--workspace-bg:#f4f4f4;
+--text-color:#222;
+--divider-color:#d0d0d0;
+}
+
+body.light .nav-item img{
+filter: brightness(0) saturate(100%) invert(4%) sepia(25%) saturate(1500%) hue-rotate(190deg) brightness(90%) contrast(95%);
+}
+
+body.dark .nav-item img{
+filter: brightness(0) saturate(100%) invert(88%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(105%) contrast(95%);
+}
+
+.side-panel{
+position:fixed;
+top:0;
+left:5.625rem;
+width:0;
+height:100vh;
+
+background:var(--workspace-bg);
+border-right:0.0625rem solid var(--divider-color);
+
+overflow:hidden;
+transition:width 0.5s ease;
+z-index:10;
+}
+
+.side-panel.open{
+width:20rem;
+padding:1rem;
+}
+
+.uploads-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:0.625rem;
+}
+
+.upload-thumb{
+width:100%;
+aspect-ratio:1/1;
+border-radius:0.375rem;
+transition:transform 0.2s;
+overflow:hidden;
+cursor:pointer;
+}
+
+.upload-thumb img{
+width:100%;
+height:100%;
+object-fit:cover;
+transform:scale(1.05);
+}
+
+
+.workspace-item {
+  position: absolute;
+  user-select: none;
+}
+
+.workspace-item[contenteditable="true"] {
+  user-select: none;
+  cursor: text;
+}
+.draw-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+.text-toolbar{
+position:absolute !important;
+top:1.25rem;
+left:7.5rem;
+background:transparent;
+padding:0.5rem 0.625rem;
+border-radius:0.5rem;
+display:flex;
+gap:0.5rem;
+align-items:center;
+box-shadow:none;
+border:none;
+z-index:9999;
+}
+
+.delete-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 80, 80, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.delete-btn img{
+  width: 0.9rem;
+  height: 0.9rem;
+  pointer-events: none;
+}
+
+.text-toolbar input[type="number"]{
+width:3.4375rem;
+padding:0.125rem 0.25rem;
+}
+
+
+
+
+.moveable-control-box {
+  border: 0.1rem solid rgba(120,120,255,0.7) !important;
+}
+
+.moveable-control {
+  width: 0.6rem !important;
+  height: 0.6rem !important;
+  border-radius: 50%;
+  background: white !important;
+  border: 0.12rem solid #6c63ff !important;
+}
+
+.moveable-rotation-control {
+  width: 1.4rem !important;
+  height: 1.4rem !important;
+  border-radius: 50%;
+  background: white url("../assets/pictures/rotate.png") center/70% no-repeat !important;
+  border: 0.12rem solid #6c63ff !important;
+}
+
+.moveable-line {
+  background: #6c63ff !important;
+  height: 0.1rem !important;
+}
+
+.moveable-control:hover {
+  transform: scale(1.15);
+}
+
+.moveable-control.moveable-direction-n,
+.moveable-control.moveable-direction-s,
+.moveable-control.moveable-direction-e,
+.moveable-control.moveable-direction-w {
+  display: none !important;
+}
+
+.draw-toolbar{
+position:absolute;
+left:5.625rem;
+top:37%;
+background:var(--navbar-bg);
+border-radius:1.125rem;
+padding:0.75rem;
+display:flex;
+flex-direction:column;
+gap:0.75rem;
+border:0.0625rem solid var(--divider-color);
+
+z-index:1000;
+}
+
+/* DRAW TOOLS */
+
+.draw-tool{
+background:none;
+border:none;
+cursor:pointer;
+padding:0.375rem;
+}
+
+.draw-tool img{
+width:2rem;
+height:2rem;
+object-fit:contain;
+}
+
+/* COLOR PICKER */
+
+.color-picker-btn{
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.draw-color{
+position:absolute;
+opacity:0;
+width:100%;
+height:100%;
+cursor:pointer;
+}
+
+.draw-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.color-picker-btn {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.color-picker-btn img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.color-preview {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  width: 28px;
+  height: 18px;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.draw-color {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.color-picker-btn {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.color-icon {
+  width: 70%;
+  height: 70%;
+
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+.color-picker-btn input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}

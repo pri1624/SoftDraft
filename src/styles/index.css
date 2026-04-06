@@ -1,0 +1,13 @@
+.theme-light {
+  --bg: #e7ecef;
+  --drop-bg: rgba(0,0,0,0.03);
+  --border: #888;
+  --text: #111;
+}
+
+.theme-dark {
+  --bg: #020d20;
+  --drop-bg: rgba(255,255,255,0.05);
+  --border: #5e7ebe;
+  --text: #f5f5f5;
+}

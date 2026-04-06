@@ -1,0 +1,139 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.light-home {
+  color: #020d20;
+}
+
+.dark-home {
+  min-height: 100vh;
+  color: #e7ecef;
+  
+}
+.light-home,
+.dark-home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+  font-family: 'Gaegu';
+}
+
+.title {
+  width: 90%;
+  max-width: 900px;
+  height: auto;
+}
+
+.quote{
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+}
+.light-home,
+.dark-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+
+.theme-toggle{
+  position: absolute;
+  top: 5vh;
+  right: 5vh;
+  width: 4vh;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  transition: background 0.5s ease;
+}
+
+body.light {
+  background: #e7ecef;
+  color: #020d20;
+}
+
+body.dark {
+  background: #020d20;
+  color: #e7ecef;
+}
+
+.light-home,
+.dark-home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+  font-family: 'Gaegu';
+  transition: all 0.5s ease;
+}
+
+:root {
+  --dot-size: 0.8px;
+  --dot-gap: 22px;
+}
+
+body.light {
+  background-color: #e7ecef;
+  background-image: radial-gradient(
+    #020d20 var(--dot-size),
+    transparent var(--dot-size)
+  );
+  background-size: var(--dot-gap) var(--dot-gap);
+  color: #020d20;
+}
+
+body.dark {
+  background-color: #020d20;
+  background-image: radial-gradient(
+    #e7ecef69 var(--dot-size),
+    transparent var(--dot-size)
+  );
+  background-size: var(--dot-gap) var(--dot-gap);
+  color: #e7ecef;
+}
+
+
+.start{
+  font-size: 1.3rem;
+  font-family: 'Gaegu';
+}
+
+@media (max-width: 768px) {
+
+  .light-home,
+  .dark-home {
+    font-size: 1.5rem;
+    padding: 2rem 1rem;
+    gap: 1.5vh;
+  }
+   .title {
+  width: clamp(300px, 100vw, 900px);
+  height: auto;
+}
+
+  .quote {
+    font-size: 1.7rem;
+    padding: 0 1rem;
+  }
+
+  .start {
+    font-size: 1.1rem;
+  }
+
+}

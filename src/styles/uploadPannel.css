@@ -1,0 +1,184 @@
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  padding: clamp(1rem, 3vw, 3rem);
+  font-family: 'Gaegu';
+  text-align: center;
+  font-size: 1.5rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  padding: clamp(1.5rem, 5vw, 4rem);
+  border: 2px dashed;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 1.5rem;
+  gap: clamp(0.5rem, 1.5vw, 1.2rem);
+}
+
+body.light .drop-zone {
+  border-color: #888;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+body.dark .drop-zone {
+  border-color: #3a4a6a;
+  background: rgba(255, 255, 255, 0.05);
+}
+.drop-image {
+  width: clamp(3rem, 8vw, 6rem);
+  height: auto;
+}
+.drop-zone p,
+.drop-zone span {
+  font-size: 1.5rem;
+  
+}
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  margin-top: clamp(1rem, 3vw, 2rem);
+  width: min(95%, 50rem);
+}
+.preview-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+.preview-card button {
+  margin-top: 0.4rem;
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+}
+
+.upload-statement{
+  width: min(75%, 50rem);
+}
+
+body.dark .preview-remove {
+  font-family: Gaegu;
+  color: #e7ecef;
+  background: transparent;
+  border: none;
+  border-radius: 5%;
+}
+
+body.light .preview-remove {
+  font-family: Gaegu;
+  color: #020d20;
+  background: transparent;
+  border: none;
+  border-radius: 5%;
+}
+
+body.dark .continue {
+  font-family: Gaegu;
+  font-size: 2rem;
+  margin-top: 8%;
+  color: #e7ecef;
+  width: fit-content;
+  background: transparent;
+  border: 2px solid #e7ecef;
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+body.dark .continue:hover {
+  background: #e7ecef;
+  color: #020d20;
+  transition: 0.3s;
+}
+
+body.light .continue {
+  font-family: Gaegu;
+  font-size: 2rem;
+  margin-top: 8%;
+  color: #020d20;
+  background:transparent;
+  width: min(20%, 30rem);
+  background: transparent;
+  border: 2px solid #020d20;
+  border-radius: 0.5rem;
+}
+body.light .continue:hover {
+  background: #020d20;
+  color: #e7ecef;
+  transition: 0.3s;
+}
+
+
+@media (max-width: 768px) {
+
+  .upload-container {
+    font-size: 1.1rem;
+    padding: 1.5rem;
+  }
+
+  .drop-zone {
+    width: 60%;
+    padding: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .drop-zone p,
+  .drop-zone span {
+    font-size: 1.3rem;
+  }
+
+  .preview-grid {
+    grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+    width: 95%;
+  }
+
+  .continue {
+    font-size: 1.6rem;
+    width: 80%;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .upload-container {
+    font-size: 1.1rem;
+    padding: 1.5rem;
+  }
+
+  .drop-zone {
+    width: 60%;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .drop-image {
+    width: 4rem;
+  }
+
+  .drop-zone p,
+  .drop-zone span {
+    font-size: 1.2rem;
+  }
+
+  .preview-grid {
+    grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
+    gap: 0.5rem;
+  }
+
+  .continue {
+    font-size: 1.3rem;
+    width: 90%;
+    margin-top: 1.5rem;
+  }
+
+}
