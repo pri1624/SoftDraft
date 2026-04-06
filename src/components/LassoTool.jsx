@@ -1,5 +1,5 @@
 import React, {useState, forwardRef, useImperativeHandle} from "react";
-import "../styles/cutoutTray.css";
+import "../styles/cutouttray.css";
 
 const LassoTool = forwardRef(function LassoTool(
   { active, image, containerRef, onConfirm },
