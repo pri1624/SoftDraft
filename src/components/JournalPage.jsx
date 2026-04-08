@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Moveable from "react-moveable";
+import html2canvas from "html2canvas";
 
 import "../styles/journalpage.css";
 import JournalBackground from "./JournalBackground";
 import JournalPageDraw from "./JournalPageDraw";
 import background from "../assets/pictures/background.png";
 import uploads from "../assets/pictures/upload.png";
-import elements from "../assets/pictures/elements.png";
 import undo from "../assets/pictures/undo.png";
 import redo from "../assets/pictures/redo.png";
 import textIcon from "../assets/pictures/text.png";
@@ -18,12 +18,13 @@ import pencil from "../assets/pictures/pencil.png";
 import marker from "../assets/pictures/marker.png";
 import eraser from "../assets/pictures/eraser.png";
 import colorPicker from "../assets/pictures/colorpicker.png";
-
+import download from  "../assets/pictures/download.png";
 function JournalPage() {
 
   const location = useLocation();
   const panelRef = useRef(null);
   const navbarRef = useRef(null);
+  const workspaceRef = useRef(null);
 
   const [workspaceBg, setWorkspaceBg] = useState(null);
   const [cutouts, setCutouts] = useState([]);
@@ -143,6 +144,27 @@ function JournalPage() {
     saveState(newItems);
   };
 
+  /* ---------------- Download Page ---------------- */
+  
+  const handleDownload = async () => {
+    if (!workspaceRef.current) return;
+    
+    setSelectedIndex(null);
+    closeAllPanels();
+    
+    setTimeout(async () => {
+      const canvas = await html2canvas(workspaceRef.current, {
+        useCORS: true,
+        backgroundColor: null,
+      });
+      const url = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.download = "journal_page.png";
+      link.href = url;
+      link.click();
+    }, 100);
+  };
+
   return (
     <div className="journal-container">
 
@@ -195,6 +217,14 @@ function JournalPage() {
         </div>
 
       </div>
+
+      <button
+        className="icon-btn download-btn"
+        onClick={handleDownload}
+        title="Download Page"
+      >
+        <img src={download} alt="Download" />
+      </button>
 
       {/* SIDE PANEL */}
 
@@ -339,6 +369,7 @@ function JournalPage() {
       {/* WORKSPACE */}
 
       <div
+  ref={workspaceRef}
   className="journal-workspace"
   onMouseDown={(e) => {
     const ignoreClick =
